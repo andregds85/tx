@@ -16,23 +16,24 @@ class ChecklistController  extends Controller
          $this->middleware('permission:solicitante-delete', ['only' => ['destroy']]);
     }
     
+
     public function index()
     {
             return view('checklistTransporte.index');
     }
-   
+    
 
-   
     public function store(Request $request)
     {
         request()->validate([
                
         ]);    
         Checklist::create($request->all());
-        return view('monitoramento.index');
-  
+        return view('checklistTransporte.index');
     }
 
+  
     
+
 }
 

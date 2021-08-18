@@ -724,8 +724,6 @@ use App\Http\Controllers\ChecklistController;
                         </div>
 
 
-
-
                     <!--  fliquida -->
                      <div class="form-group row">
                             <label for="fliquida" class="col-md-4 col-form-label text-md-right">{{ __('F Líquida') }}</label>
@@ -741,8 +739,7 @@ use App\Http\Controllers\ChecklistController;
 
 
 
-
-                        
+                       
                     <!--  Tanque Cheio k. -->
                      <div class="form-group row">
                             <label for="tanqueK" class="col-md-4 col-form-label text-md-right">{{ __('Tanke Cheio K') }}</label>
@@ -756,17 +753,13 @@ use App\Http\Controllers\ChecklistController;
                             </div>
                         </div>
 
-
                    
-
 
 
                        </div>
                         </div>
                         </div>
                         </div>
-
-
 
 
                          <div class="form-group row mb-0">
