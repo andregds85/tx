@@ -28,13 +28,6 @@ use App\Http\Controllers\MinhasSolicitacoesController;
 
 
 
-
-
-
-
-
-
-
 Route::get('/', function () {
     return view('home');
 });
@@ -56,8 +49,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('sound', soundController::class);
     Route::resource('checklist', ChecklistController::class);
 
-
- 
     
 
     Route::resource('sucesso', MonitoramentoController::class);
@@ -68,10 +59,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('minhassolicitacoes',MinhasSolicitacoesController::class);
 
 
-
-
-   
-    
+       
     Route::get('checklistpdf/{id}', [ChecklistControllerPDF::class, 'generatePDF']); 
     Route::get('pdf', [TerrestreControllerPDF::class, 'generatePDF']); 
     Route::get('aereoPdf', [aerioControllerPDF::class, 'generatePDF']); 
@@ -80,8 +68,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('manual', ManualController::class);
 
-
-      
+     
    
     Route::get('import_exportpacie', 'App\Http\Controllers\Import_Export_ControllerPacie@importExport');
     Route::post('importpacie', 'App\Http\Controllers\Import_Export_ControllerPacie@import');

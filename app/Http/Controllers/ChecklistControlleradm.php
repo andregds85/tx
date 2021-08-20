@@ -25,12 +25,13 @@ class ChecklistControlleradm extends Controller
    
     public function show($id)
     {
-        return view('checklistTransporte.mypdf',['id'=>$id]);
+        return view('checklistadm.mypdf',['id'=>$id]);
 
     }
 
-    
-      
+
+
+
 
 
 

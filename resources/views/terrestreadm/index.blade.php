@@ -23,15 +23,15 @@
 ?>
     <table class="table table-bordered">
         <tr>
-            <th>id</th>
-            <th>Solicitação</th>
+            <th>Semana</th>
+            <th>Data</th>
             <th>idade</th>
         </tr>
 
     @foreach ($tabela as $t)
 	    <tr>
-            <td>{{$t->id}}</td>
-            <td>{{$t->nome }}</td>
+            <td>{{$t->semana}}</td>
+            <td>{{$t->dia }}/{{$t->mes }}/{{$t->ano}}</td>
             <td>{{$t->idade }}</td>
   
                 @endforeach
