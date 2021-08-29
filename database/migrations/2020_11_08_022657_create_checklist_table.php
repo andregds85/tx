@@ -24,6 +24,7 @@ class CreatechecklistTable extends Migration
             $table->string('codPlaca',100)->nullable();
                      
            /* Kilometragem  */ 
+           /*
             $table->integer('Kfinal')->nullable();
             $table->integer('Kinicial')->nullable();
             $table->integer('total')->nullable();
@@ -33,6 +34,26 @@ class CreatechecklistTable extends Migration
             $table->double('combustivel', 8, 2);
             $table->double('fliquida', 8, 2);
             $table->double('tanqueK', 8, 2); 
+
+                */
+
+            $table->integer('Kfinal')->nullable();
+            $table->integer('Kinicial')->nullable();
+            $table->integer('total')->nullable();
+            $table->integer('Fbruta')->nullable();
+            $table->integer('porcentagem')->nullable();
+            $table->double('comissao', 8, 2);
+            $table->double('combustivel', 8, 2);
+            $table->double('fliquida', 8, 2);
+            $table->double('tanqueK', 8, 2); 
+
+
+
+
+
+
+
+
 
 
             $table->timestamps();  
