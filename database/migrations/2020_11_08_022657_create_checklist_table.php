@@ -14,14 +14,14 @@ class CreatechecklistTable extends Migration
              /*Dados do motorista e carro */ 
             $table->id();
             $table->text('nome')->nullable();
-            $table->string('dia',25)->nullable();
-            $table->string('mes',25)->nullable();
-            $table->string('ano',25)->nullable();
-            $table->string('semana',25)->nullable();
-            $table->double('horaInicial', 2, 2);
-            $table->double('horaFinal', 2, 2);
-            $table->string('motorista',25)->nullable();
-            $table->string('codPlaca',25)->nullable();
+            $table->string('dia',100)->nullable();
+            $table->string('mes',100)->nullable();
+            $table->string('ano',100)->nullable();
+            $table->string('semana',100)->nullable();
+            $table->string('horaInicial',100)->nullable();
+            $table->string('horaFinal',100)->nullable();
+            $table->string('motorista',100)->nullable();
+            $table->string('codPlaca',100)->nullable();
                      
            /* Kilometragem  */ 
             $table->integer('Kfinal')->nullable();

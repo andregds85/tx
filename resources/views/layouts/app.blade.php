@@ -5,11 +5,6 @@
     <title>{{ config('app.name') }}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-
-    <link rel="canonical" href="http://www.cerintersc.com.br/" />
-    <link rel="canonical" href="http://www.cerintersc.com.br/content/home/" />
-
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
@@ -58,48 +53,7 @@
  <!-- Ler no Futuro colocar os endereços de imagem na nuvem pois perde o endereçamento se colocar em servidor local -->
 
 
-   <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown user-menu">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src="img/avatar.png"
-                         class="user-image img-circle elevation-2" alt="User Image">
-                </a>
-                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <!-- User image -->
-                    <li class="user-header bg-primary">
-                        <img src="img/avatar.png"
-                             class="img-circle elevation-2"
-                             alt="User Image">
-                        <p>
-                        </p>
-                    </li>
-                    <!-- Menu Footer-->
-                    <li class="user-footer">
-                        <a href="{{ route('login') }}" class="btn btn-default btn-flat">Login</a>
-
-                        <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                   <span class="caret"></span>
-                                </a>
-
-
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Sair') }}
-                                    </a>
-
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                              </div>
-                                         
-                 
-                  
-                    </li>
-                </ul>
+   
             </li>
         </ul>
     </nav>
@@ -116,7 +70,8 @@
 
     <!-- Main Footer -->
     <footer class="main-footer">
-       <strong>Cerinter @ Secretaria de Estado de Saúde &copy; <?php echo '20'. $hoje=date('y'); ?> 
+       
+    <strong>Cerinter @ Secretaria de Estado da Saúde  &copy; <?php echo '20'. $hoje=date('y'); ?> 
     </footer>
 </div>
 
@@ -170,7 +125,3 @@
 @stack('page_scripts')
 </body>
 </html>
-
-
-
-
