@@ -3,8 +3,6 @@ use App\Models\Checklist;
 use App\Http\Controllers\ChecklistController;
 
 $tabela = Checklist::all(); 
-
-
 $itensP = Checklist::where('id',$id)->get(); 
 
 ?>
@@ -44,16 +42,12 @@ $itensP = Checklist::where('id',$id)->get();
 </table>
 
 
-
 <table class="table table-bordered">
   <tbody>
     <tr>
-
-
       <td colspan="5"><b>ID</b> :{{$t->id }} <br>
     <b>Data :</b>{{$t->created_at }} <br>
     <b> Semana:</b> {{$t->semana }} <br>
-    <b> Nome: </b>{{$t->nome }}<br>
     </td>
     </tr>
   </tbody>
@@ -75,6 +69,7 @@ $itensP = Checklist::where('id',$id)->get();
    </tr>
   </tbody>
 </table>
+
 
 
 <table class="table table-bordered">

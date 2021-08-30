@@ -11,7 +11,6 @@ class checklist extends Model
     protected $table="checklist";
     protected $fillable = [
    
-      'nome',
       'dia',
       'mes',
       'ano',

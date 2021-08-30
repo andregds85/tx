@@ -449,46 +449,114 @@ use App\Http\Controllers\ChecklistController;
                         </div>
 
 
-
-
-
     
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Check List') }}</div>
-
+                <div class="card-header">{{ __('Controle de Corridas') }}</div>
                 <div class="card-body">
+           
+                  
 
 
-
-                          <!--  nome -->
-                          <div class="form-group row">
-                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                    <!--  Dia -->
+                     <div class="form-group row" required>
+                            <label for="dia" class="col-md-4 col-form-label text-md-right">{{ __('Dia') }}</label>
                             <div class="col-md-6">
-                                <input id="nome" type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" required autocomplete="nome">
-                                @error('nome')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <select id="Dia" class="form-control" name="dia">
+                            <option selected></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                           </select>    
                             </div>
                         </div>
+                     <br>                     
+  
 
-            
-                      <!--  Dia -->
-                      <div class="form-group row">
-                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Dia') }}</label>
+
+
+                        
+                    <!--  mês -->
+                     <div class="form-group row" required>
+                            <label for="mes" class="col-md-4 col-form-label text-md-right">{{ __('Mês') }}</label>
                             <div class="col-md-6">
-                                <input id="dia" type="text" class="form-control @error('dia') is-invalid @enderror" name="dia" required autocomplete="dia">
-                                @error('nome')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <select id="Dia" class="form-control" name="mes">
+                            <option selected></option>
+                            <option value="1">Janeiro</option>
+                            <option value="2">Fevereiro</option>
+                            <option value="3">Março</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Maio</option>
+                            <option value="6">Junho</option>
+                            <option value="7">Julho</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Setembro</option>
+                            <option value="10">Outubro</option>
+                            <option value="11">Novembro</option>
+                            <option value="12">Dezembro</option>
+                           </select>    
                             </div>
                         </div>
+                     <br>                     
+  
+
+                   
+                     
+                                                                  
+                    <!--  Ano -->
+                    <div class="form-group row" required>
+                            <label for="mes" class="col-md-4 col-form-label text-md-right">{{ __('Mês') }}</label>
+                            <div class="col-md-6">
+                            <select id="Dia" class="form-control" name="mes">
+                            <option selected></option>
+                            <option value="1">Janeiro</option>
+                            <option value="2">Fevereiro</option>
+                            <option value="3">Março</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Maio</option>
+                            <option value="6">Junho</option>
+                            <option value="7">Julho</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Setembro</option>
+                            <option value="10">Outubro</option>
+                            <option value="11">Novembro</option>
+                            <option value="12">Dezembro</option>
+                           </select>    
+                            </div>
+                        </div>
+                     <br> 
+
+
 
 
                       <!--  mes -->
@@ -497,20 +565,6 @@ use App\Http\Controllers\ChecklistController;
                             <div class="col-md-6">
                                 <input id="mes" type="text" class="form-control @error('mes') is-invalid @enderror" name="mes" required autocomplete="mes">
                                 @error('mes')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                           <!--  ano -->
-                          <div class="form-group row">
-                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Ano') }}</label>
-                            <div class="col-md-6">
-                                <input id="ano" type="text" class="form-control @error('ano') is-invalid @enderror" name="ano" required autocomplete="ano">
-                                @error('ano')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
