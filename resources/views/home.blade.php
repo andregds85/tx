@@ -4,8 +4,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Cerinter @ Secretaria de Estado de Saúde') }}</div>
-                <div class="card-header"><img src="img/4.gif"> Transporte Terrestre</div>
+                <div class="card-header">{{ __('taxi @ taxifloripa.ml') }}</div>
+                <div class="card-header"><img src="img/4.gif"> Taxi Floripa</div>
                 <br>
 
                 <br>

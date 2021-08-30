@@ -27,8 +27,8 @@ $count = Flight::where('active', 1)->count();
       <thead>
         <tr>
           <th>ID</th>
-          <th>cpf</th>
-          <th>Ação</th>
+          <th>Semana</th>
+          <th>Data</th>
  
         </tr>
       </thead>
@@ -37,7 +37,7 @@ $count = Flight::where('active', 1)->count();
       @foreach ($tabela as $t)
          <tr>
             <td>{{$t->id}}</td>
-            <td>{{$t->cpf}}</td>
+            <td>{{$t->semana}}</td>
 
             <td>  <a class="btn btn-info" href="{{ route('checklistadm.show',$t->id) }}">Vizualizar</a>
 

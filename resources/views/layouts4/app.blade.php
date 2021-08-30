@@ -48,13 +48,9 @@
             </li>
         </ul>
 
-
-
  <!-- Ler no Futuro colocar os endereços de imagem na nuvem pois perde o endereçamento se colocar em servidor local -->
 
-
-   
-            </li>
+              </li>
         </ul>
     </nav>
 
@@ -71,7 +67,7 @@
     <!-- Main Footer -->
     <footer class="main-footer">
        
-    <strong>Cerinter @ Secretaria de Estado da Saúde  &copy; <?php echo '20'. $hoje=date('y'); ?> 
+    <strong>taxifloripa.ml  &copy; <?php echo '20'. $hoje=date('y'); ?> 
     </footer>
 </div>
 

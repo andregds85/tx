@@ -71,7 +71,7 @@
     <!-- Main Footer -->
     <footer class="main-footer">
        
-    <strong>Cerinter @ Secretaria de Estado da Saúde  &copy; <?php echo '20'. $hoje=date('y'); ?> 
+    <strong>taxifloripa.ml  &copy; <?php echo '20'. $hoje=date('y'); ?> 
     </footer>
 </div>
 
