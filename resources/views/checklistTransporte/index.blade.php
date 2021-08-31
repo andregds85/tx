@@ -1,6 +1,20 @@
 @extends('layouts3.app')
 @section('content')
 
+<SCRIPT> 
+
+function k(i) {
+	var v = i.value.replace(/\D/g,'');
+	v = (v/100).toFixed(2) + '';
+	v = v.replace(".", ",");
+	v = v.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+	v = v.replace(/(\d)(\d{3}),/g, "$1.$2,");
+	i.value = v;
+}
+
+
+</script>
+
 
 <SCRIPT> 
 <!--
@@ -389,13 +403,9 @@ return false;
 
 
 
-
-
-
 return true;
 }
  
-
 </script>
 
 
@@ -421,7 +431,7 @@ function onlynumber(evt) {
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Checklist') }}</div>
+                <div class="card-header">{{ __('Controle de Corridas ') }}</div>
 
                 <div class="card-body">
                 <form action="{{ route('checklist.store') }}" method="POST" id="validate" enctype="multipart/form-data" NAME="regform"
@@ -457,9 +467,7 @@ use App\Http\Controllers\ChecklistController;
                 <div class="card-header">{{ __('Controle de Corridas') }}</div>
                 <div class="card-body">
            
-                  
-
-
+              
                     <!--  Dia -->
                      <div class="form-group row" required>
                             <label for="dia" class="col-md-4 col-form-label text-md-right">{{ __('Dia') }}</label>
@@ -502,9 +510,6 @@ use App\Http\Controllers\ChecklistController;
                         </div>
                      <br>                     
   
-
-
-
                         
                     <!--  mês -->
                      <div class="form-group row" required>
@@ -530,117 +535,63 @@ use App\Http\Controllers\ChecklistController;
                      <br>                     
   
 
-                   
-                     
+        
+                    
                                                                   
                     <!--  Ano -->
                     <div class="form-group row" required>
-                            <label for="mes" class="col-md-4 col-form-label text-md-right">{{ __('Mês') }}</label>
+                            <label for="mes" class="col-md-4 col-form-label text-md-right">{{ __('Ano') }}</label>
                             <div class="col-md-6">
-                            <select id="Dia" class="form-control" name="mes">
+                            <select id="Dia" class="form-control" name="ano">
                             <option selected></option>
-                            <option value="1">Janeiro</option>
-                            <option value="2">Fevereiro</option>
-                            <option value="3">Março</option>
-                            <option value="4">Abril</option>
-                            <option value="5">Maio</option>
-                            <option value="6">Junho</option>
-                            <option value="7">Julho</option>
-                            <option value="8">Agosto</option>
-                            <option value="9">Setembro</option>
-                            <option value="10">Outubro</option>
-                            <option value="11">Novembro</option>
-                            <option value="12">Dezembro</option>
+                            <option value=<?php $d; ?> ><?php  echo $d='20'.date('y'); ?></option>
+            
                            </select>    
+                            </div>
+                        </div>
+                     <br> 
+            
+
+                    <!--  Semana -->
+                    <div class="form-group row" required>
+                            <label for="semana" class="col-md-4 col-form-label text-md-right">{{ __('Semana') }}</label>
+                            <div class="col-md-6">
+                            <select id="Dia" class="form-control" name="semana">
+                            <option selected></option>
+                            <option value="1">Domingo</option>
+                            <option value="2">Segunda Feira</option>
+                            <option value="3">Terça Feira</option>
+                            <option value="4">Quarta Feira </option>
+                            <option value="5">Quinta Feira</option>
+                            <option value="6">Sexta Feira</option>
+                            <option value="7">Sábado</option>
+                     </select>    
                             </div>
                         </div>
                      <br> 
 
 
 
-
-                      <!--  mes -->
-                      <div class="form-group row">
-                            <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Mês') }}</label>
+                   <!--  Motorista -->
+                   <div class="form-group row" required>
+                            <label for="mes" class="col-md-4 col-form-label text-md-right">{{ __('Motorista') }}</label>
                             <div class="col-md-6">
-                                <input id="mes" type="text" class="form-control @error('mes') is-invalid @enderror" name="mes" required autocomplete="mes">
-                                @error('mes')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <select id="Dia" class="form-control" name="ano">
+                            <option selected></option>
+                            <option value="{{Auth::user()->name}}" >{{ Auth::user()->email}}</option>
+            
+                           </select>    
                             </div>
                         </div>
+                     <br> 
 
-
-                        
-                         <!--  semana -->
-                           <div class="form-group row">
-                            <label for="semana" class="col-md-4 col-form-label text-md-right">{{ __('Semana') }}</label>
-                            <div class="col-md-6">
-                                <input id="semana" type="text" class="form-control @error('semana') is-invalid @enderror" name="semana" required autocomplete="semana">
-                                @error('semana')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                            
-
-                        <!--  horaInicial -->
-                       <div class="form-group row">
-                            <label for="horaInicial" class="col-md-4 col-form-label text-md-right">{{ __('Hora Inicial') }}</label>
-                            <div class="col-md-6">
-                                <input id="horaInicial" type="text" class="form-control @error('horaInicial') is-invalid @enderror" name="horaInicial" required autocomplete="horaInicial">
-                                @error('horaInicial')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
-                        <!--  horaFinal -->
+                
+                                                
+                    <!-- Código da Placa -->
                         <div class="form-group row">
-                            <label for="horaFinal" class="col-md-4 col-form-label text-md-right">{{ __('Hora Final') }}</label>
+                            <label for="codPlaca" class="col-md-4 col-form-label text-md-right">{{ __('Código da Placa') }}</label>
                             <div class="col-md-6">
-                                <input id="horaFinal" type="text" class="form-control @error('horaFinal') is-invalid @enderror" name="horaFinal" required autocomplete="horaFinal">
-                                @error('horaFinal')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
-
-                     <!--  Motorista -->
-                    <div class="form-group row">
-                            <label for="motorista" class="col-md-4 col-form-label text-md-right">{{ __('Motorista') }}</label>
-                            <div class="col-md-6">
-                                <input id="motorista" type="text" class="form-control @error('motorista') is-invalid @enderror" name="motorista" required autocomplete="motorista">
-                                @error('motorista')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                                           
-
-
-                     <!--  codPlaca -->
-                     <div class="form-group row">
-                            <label for="codPlaca" class="col-md-4 col-form-label text-md-right">{{ __('codPlaca') }}</label>
-                            <div class="col-md-6">
-                                <input id="codPlaca" type="text" class="form-control @error('codPlaca') is-invalid @enderror" name="codPlaca" required autocomplete="codPlaca">
+                            <input type="text"  name="codPlaca" class="form-control @error('codPlaca') is-invalid @enderror"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
                                 @error('codPlaca')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -648,11 +599,40 @@ use App\Http\Controllers\ChecklistController;
                                 @enderror
                             </div>
                         </div>
-                  
-        
+
+
+                        <!--  horaInicial -->
+                       <div class="form-group row">
+                            <label for="horaInicial" class="col-md-4 col-form-label text-md-right">{{ __('Hora Inicial') }}</label>
+                            <div class="col-md-6">
+                                <input type="time" id="horaInicial" name="horaInicial"
+                                 min="00:00" max="23:59" required>
+
+                                @error('horaInicial')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <!--  horaFinal -->
+                       <div class="form-group row">
+                            <label for="horaFinal" class="col-md-4 col-form-label text-md-right">{{ __('Hora Final') }}</label>
+                            <div class="col-md-6">
+                                <input type="time" id="horaFinal" name="horaFinal"
+                                 min="00:00" max="23:59" required>
+
+                                @error('horaInicial')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+     
         <br>
 
-                          
                  </div>
                         </div>
                         </div>
@@ -664,19 +644,17 @@ use App\Http\Controllers\ChecklistController;
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Kilometragem:') }}</div>
-              
-             
-                <div class="card-body">
+                <div class="card-header">{{ __('') }}</div>
+                    <div class="card-body">
 
 
 
 
-                        <!--  Kilometragem Final -->
+                    <!--  Kilometragem Final -->
                         <div class="form-group row">
                             <label for="Kfinal" class="col-md-4 col-form-label text-md-right">{{ __('kilometragem Final') }}</label>
                             <div class="col-md-6">
-                                <input id="Kfinal" type="text" class="form-control @error('Kfinal') is-invalid @enderror" name="Kfinal" required autocomplete="Kfinal">
+                            <input type="text"  name="Kfinal" class="form-control @error('Kinicial') is-invalid @enderror"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
                                 @error('Kfinal')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -685,12 +663,13 @@ use App\Http\Controllers\ChecklistController;
                             </div>
                         </div>
 
+
           
-                        <!--  Kilometragem Kinicial -->
-                        <div class="form-group row">
+                            <!--  Kilometragem Kinicial -->
+                            <div class="form-group row">
                             <label for="Kinicial" class="col-md-4 col-form-label text-md-right">{{ __('kilometragem Inicial') }}</label>
                             <div class="col-md-6">
-                                <input id="Kinicial" type="text" class="form-control @error('Kinicial') is-invalid @enderror" name="Kinicial" required autocomplete="Kinicial">
+                            <input type="text"  name="Kinicial" class="form-control @error('Kinicial') is-invalid @enderror"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
                                 @error('Kinicial')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -698,15 +677,32 @@ use App\Http\Controllers\ChecklistController;
                                 @enderror
                             </div>
                         </div>
-                        
 
 
-                        <!--  total -->
-                        <div class="form-group row">
-                            <label for="total" class="col-md-4 col-form-label text-md-right">{{ __('Total de kilimetros') }}</label>
+
+                    <!--  tipo de Combustivel  -->
+                    <div class="form-group row" required>
+                            <label for="tcombustivel" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de Combustível') }}</label>
                             <div class="col-md-6">
-                                <input id="total" type="text" class="form-control @error('total') is-invalid @enderror" name="total" required autocomplete="total">
-                                @error('total')
+                            <select id="tcombustivel" class="form-control" name="tcombustivel">
+                            <option selected></option>
+                            <option value="Gasolina">Gasolina</option>
+                            <option value="Álcool">Álcool </option>
+                            <option value="Eletrico">Elétrico</option>
+                            <option value="GNV">GNV</option>
+                     </select>    
+                            </div>
+                        </div>
+                     <br> 
+
+                    
+
+                        <!-- Valor do Combustivel Combustível -->
+                         <div class="form-group row">
+                            <label for="vCombustivel" class="col-md-4 col-form-label text-md-right">{{ __('Valor do Combustivel ') }}</label>
+                            <div class="col-md-6">
+                            <input type="text"  onkeyup="k(this);" name="vCombustivel" class="form-control @error('vCombustivel') is-invalid @enderror"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
+                                @error('vCombustivel')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -715,81 +711,29 @@ use App\Http\Controllers\ChecklistController;
                         </div>
 
 
-
-                        <!--  fbruto -->
+                         
+                                   
+                     
+                        <!-- Valor do Combustivel Combustível -->
                         <div class="form-group row">
-                            <label for="Fbruta" class="col-md-4 col-form-label text-md-right">{{ __('F.Bruta') }}</label>
+                            <label for="vCombustivel" class="col-md-4 col-form-label text-md-right">{{ __('Valor do Combustivel ') }}</label>
                             <div class="col-md-6">
-                                <input id="Fbruta" type="text" class="form-control @error('Fbruta') is-invalid @enderror" name="Fbruta" required autocomplete="Fbruta">
-                                @error('Fbruta')
+                            <input type="text"  onkeyup="k(this);" name="vCombustivel" class="form-control @error('vCombustivel') is-invalid @enderror"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
+                                @error('vCombustivel')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
+
+
 
 
    
 
-                        <!--  Porcentagem -->
-                        <div class="form-group row">
-                            <label for="porcentagem" class="col-md-4 col-form-label text-md-right">{{ __('Porcentagem') }}</label>
-                            <div class="col-md-6">
-                                <input id="porcentagem" type="text" class="form-control @error('porcentagem') is-invalid @enderror" name="porcentagem" required autocomplete="porcentagem">
-                                @error('porcentagem')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
 
-
-          
-
-                        <!--  Comissão -->
-                        <div class="form-group row">
-                            <label for="comissao" class="col-md-4 col-form-label text-md-right">{{ __('Comissão') }}</label>
-                            <div class="col-md-6">
-                                <input id="comissao" type="text" class="form-control @error('comissao') is-invalid @enderror" name="comissao" required autocomplete="comissao">
-                                @error('comissao')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
-                      <!--  combustivel -->
-                        <div class="form-group row">
-                            <label for="combustivel" class="col-md-4 col-form-label text-md-right">{{ __('Comissão') }}</label>
-                            <div class="col-md-6">
-                                <input id="combustivel" type="text" class="form-control @error('combustivel') is-invalid @enderror" name="combustivel" required autocomplete="combustivel">
-                                @error('combustivel')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                    <!--  fliquida -->
-                     <div class="form-group row">
-                            <label for="fliquida" class="col-md-4 col-form-label text-md-right">{{ __('F Líquida') }}</label>
-                            <div class="col-md-6">
-                                <input id="fliquida" type="text" class="form-control @error('fliquida') is-invalid @enderror" name="fliquida" required autocomplete="fliquida">
-                                @error('fliquida')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
 
 
