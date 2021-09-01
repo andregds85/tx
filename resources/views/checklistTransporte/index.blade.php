@@ -1,6 +1,64 @@
 @extends('layouts3.app')
 @section('content')
 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+ 
+
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+    var next = 0;
+    $("#add-more").click(function(e){
+        e.preventDefault();
+        var addto = "#field" + next;
+        var addRemove = "#field" + (next);
+        next = next + 1;
+        var newIn = ' <div id="field'+ next +'" name="field'+ next +'"><!-- Text input--><div class="form-group"> <label class="col-md-12 control-label" for="nome-anexo">Nome do Anexo</label> <div class="col-md-12"> <input id="nome-anexo" name="nome-anexo" type="text" placeholder="" class="form-control input-md"> </div></div><br><br><!-- File Button --> <div class="form-group"> <label class="col-md-12 control-label" for="anexo">Anexo</label> <div class="col-md-12"> <input id="anexo" name="anexo" class="input-file" type="file"> </div></div></div>';
+        var newInput = $(newIn);
+        var removeBtn = '<div class="col-md-12"><button id="remove' + (next - 1) + '" class="btn btn-danger remove-me pull-right" >Remover</button></div></div></div><div id="field">';
+        var removeButton = $(removeBtn);
+        $(addto).after(newInput);
+        $(addRemove).after(removeButton);
+        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+        $("#count").val(next);
+
+            $('.remove-me').click(function(e){
+                e.preventDefault();
+                var fieldNum = this.id.charAt(this.id.length-1);
+                var fieldID = "#field" + fieldNum;
+                $(this).remove();
+                $(fieldID).remove();
+            });
+    });
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <SCRIPT> 
 
 function k(i) {
@@ -616,6 +674,7 @@ use App\Http\Controllers\ChecklistController;
                             </div>
                         </div>
                         
+
                         <!--  horaFinal -->
                        <div class="form-group row">
                             <label for="horaFinal" class="col-md-4 col-form-label text-md-right">{{ __('Hora Final') }}</label>
@@ -695,7 +754,7 @@ use App\Http\Controllers\ChecklistController;
                         </div>
                      <br> 
 
-                    
+                   
 
                         <!-- Valor do Combustivel Combustível -->
                          <div class="form-group row">
@@ -711,50 +770,104 @@ use App\Http\Controllers\ChecklistController;
                         </div>
 
 
-                         
+                      
                                    
                      
-                        <!-- Valor do Combustivel Combustível -->
+                        <!-- outros -->
                         <div class="form-group row">
-                            <label for="vCombustivel" class="col-md-4 col-form-label text-md-right">{{ __('Valor do Combustivel ') }}</label>
+                            <label for="outros" class="col-md-4 col-form-label text-md-right">{{ __('Outros Valores:') }}</label>
                             <div class="col-md-6">
-                            <input type="text"  onkeyup="k(this);" name="vCombustivel" class="form-control @error('vCombustivel') is-invalid @enderror"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
-                                @error('vCombustivel')
+                            <input type="text"  onkeyup="k(this);" name="outros" class="form-control @error('outros') is-invalid @enderror"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
+                                @error('outros')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
-
-
-
-   
-
-
-
 
 
 
                        
-                    <!--  Tanque Cheio k. -->
-                     <div class="form-group row">
-                            <label for="tanqueK" class="col-md-4 col-form-label text-md-right">{{ __('Tanke Cheio K') }}</label>
+					<!--  Especificar outros -->
+					<div class="form-group row">
+                            <label for="Espoutros" class="col-md-4 col-form-label text-md-right">{{ __('Especificar Outros Valores:') }}</label>
                             <div class="col-md-6">
-                                <input id="tanqueK" type="text" class="form-control @error('tanqueK') is-invalid @enderror" name="tanqueK" required autocomplete="tanqueK">
-                                @error('tanqueK')
+                            <textarea class="form-control @error('Espoutros') is-invalid @enderror" name="Espoutros"  required autocomplete="Espoutros" rows="3"></textarea>
+                                @error('Espoutros')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+						</div>
+					</div>
 
-                   
 
 
-                       </div>
+
+
+
+                    <div class="col-xs-12">
+  <div class="col-md-12" >
+    <div id="field">
+      <div id="field0">
+        <!-- Text input-->
+        <div class="form-group">
+          {!! Form::label('nome-anexo', 'Nome do anexo', ['class' => 'col-md-12 control-label'])!!}
+           </div>
+        <br><br>
+
+
+      </div>
+    </div>
+    <!-- Button --><br>
+    <div class="form-group pull-right">
+      <div class="col-md-8">
+        <button id="add-more" name="add-more" class="btn btn-primary">Adicionar Campo</button>
+      </div>
+    </div>
+    <br><br>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                         </div>
                         </div>
@@ -770,9 +883,48 @@ use App\Http\Controllers\ChecklistController;
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+
+
+            </div>
+            </div>
+
+            </div>
+            </div>
+            </div>
+     
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @endsection
 
  
